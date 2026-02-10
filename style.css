@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(left to right,white, #BFECFF, #CDC1FF, #FFF6E3, #FFCCEA);
+}
+
+.container{
+    position: relative;
+    width: 850px;
+    height: 550px;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,0,0,.4);
+}
+
+.form-box{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    padding: 40px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+
+    transition:
+        transform 0.8s ease-in-out 0.45s,
+        opacity   0.8s ease-in-out 0.45s;
+}
+
+.form-box form{
+    width: 100%;
+}
+
+.form-box.login{
+    right: 0;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.form-box.register{
+    left: 0;
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.container.active .form-box.login{
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.container.active .form-box.register{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+form h1{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.input-box{
+    margin: 15px 0;
+}
+
+.input-box input, .input-box select{
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #eee;
+    outline: none;
+    font-size: 16px;
+}
+
+.btn{
+    width: 100%;
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    background: #71b7e6;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.toggle-box{
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+}
+
+.toggle-box::before{
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    right: -50%;
+    background: #71b7e6;
+    border-radius: 150px 0 0 150px;
+
+    transition: right 0.8s ease-in-out;
+}
+
+.container.active .toggle-box::before{
+    right: -100%;
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 6;
+
+    transition: all 0.8s ease-in-out 0.45s;
+}
+
+.toggle-left{
+    left: 0;
+}
+
+.container.active .toggle-left{
+    left: -100%;
+    opacity: 0;
+}
+
+.toggle-right{
+    right: -50%;
+    opacity: 0;
+}
+
+.container.active .toggle-right{
+    right: 0;
+    opacity: 1;
+}
+
+.toggle-panel .btn{
+    background: transparent;
+    border: 2px solid #fff;
+    width: 160px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px){
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .form-box{
+        width: 100%;
+    }
+
+    .form-box.login{
+        transform: translateY(0);
+    }
+
+    .form-box.register{
+        transform: translateY(-100%);
+    }
+
+    .container.active .form-box.login{
+        transform: translateY(100%);
+    }
+
+    .container.active .form-box.register{
+        transform: translateY(0);
+    }
+
+    .toggle-box::before{
+        width: 100%;
+        height: 200%;
+        right: 0;
+        top: -50%;
+        border-radius: 0 0 150px 150px;
+        transition: top 0.8s ease-in-out;
+    }
+
+    .container.active .toggle-box::before{
+        top: -100%;
+    }
+
+    .toggle-panel{
+        width: 100%;
+    }
+
+    .toggle-left{
+        top: 0;
+    }
+
+    .container.active .toggle-left{
+        top: -100%;
+    }
+
+    .toggle-right{
+        bottom: -50%;
+    }
+
+    .container.active .toggle-right{
+        bottom: 0;
+    }
+}
